@@ -20,7 +20,7 @@ print(9);
 print();
 
 // Object literal with a method
-const rectangle {
+const rectangle = {
   width: 10,
   height: 20,
   area: function() {
