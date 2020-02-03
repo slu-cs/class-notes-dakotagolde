@@ -12,7 +12,7 @@ point.x = 3;
 
 // Nested object literal
 const circle ={
-  center: point;
+  center: point
   radius: 4;
 };
 
