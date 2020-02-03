@@ -13,7 +13,7 @@ point.x = 3;
 // Nested object literal
 const circle ={
   center: point;
-  radius: 4;
+  radius: 4
 };
 
 // Access subproperties
@@ -38,3 +38,8 @@ languages[2] = 'JavaScript';
 
 // Adding elements
 languages.push('MongoDB');
+
+// Interacting over elements
+for (const lang of languages) {
+  console.log(lang);
+}
