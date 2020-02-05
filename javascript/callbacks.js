@@ -27,4 +27,4 @@ console.log(map(numbers, x => x + 1));
 
 // Using the array map method
 console.log(numbers.map(x => x**2));
-console.log(numbers.map(x => x + 1);
+console.log(numbers.map(x => x + 1));
