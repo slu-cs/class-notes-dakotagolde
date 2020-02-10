@@ -24,7 +24,7 @@ const torrey = new Professor({
 const lee = new Professor({
   name: 'Choong-Soo Lee',
   rank: 'Associate',
-  started: 20010,
+  started: 2010,
   courses: [140, 219, 256, 321, 370]
 });
 
