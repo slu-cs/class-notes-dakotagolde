@@ -31,6 +31,19 @@ const queries = [
   Professor.distinct('rank')
 ];
 
+// Run the queries in parallel
+Promise.all(queries)
+  .then(function(results) {
+    console.log('Names in order: ', results[0].map(p => p.name));
+    console.log('Started most recently: ', results[1].map(p => p.name));
+    console.log('Started in 2003: ', results[2].map(p => p.name));
+    console.log('Teaches 362: ', results[3].map(p => p.name));
+    console.log('Distinct ranks: ', results[4]);
+    mongoose.connection.close();
+  }).catch(error => console.error(error.stack));
+
+
+/*
 // Professor.find().sort('name')
 queries[0].exec(function(error, professors) {
   if (error) console.error(error.stack);
@@ -69,3 +82,4 @@ queries[4].exec(function(error, ranks) {
 
   console.log('Distinct ranks: ', ranks);
 });
+*/
