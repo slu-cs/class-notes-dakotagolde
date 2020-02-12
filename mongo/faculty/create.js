@@ -79,7 +79,7 @@ mongoose.connection.dropDatabase()
 // Reset the data
 mongoose.connection.dropDatabase()
   .then(() => harcourt.save())
-  .then(() => torrye.save())
+  .then(() => torrey.save())
   .then(() => lee.save())
   .then(() => mongoose.connection.close())
   .then(() => console.log('Database is ready.'))
