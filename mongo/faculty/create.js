@@ -28,6 +28,7 @@ const lee = new Professor({
   courses: [140, 219, 256, 321, 370]
 });
 
+/*
 // Delete any previous database
 mongoose.connection.dropDatabase(function() {
 
@@ -49,3 +50,37 @@ mongoose.connection.dropDatabase(function() {
     });
   });
 });
+*/
+
+
+/*
+// New version of callbacks in a sequence (no nesting)
+mongoose.connection.dropDatabase()
+  .then(function() {
+    return harcourt.save();
+  })
+  .then(function() {
+    return torrye.save();
+  })
+  .then(function() {
+    return lee.save();
+  })
+  .then(function() {
+    console.log('Database is ready.');
+    return mongoose.connection.close();
+  })
+  .catch(function(error) {
+    console.error(error.stack);
+  });
+*/
+
+
+// Condensed callbacks in a sequence (no nesting)
+// Reset the data
+mongoose.connection.dropDatabase()
+  .then(() => harcourt.save())
+  .then(() => torrye.save())
+  .then(() => lee.save())
+  .then(() => mongoose.connection.close())
+  .then(() => console.log('Database is ready.'))
+  .catch(error => console.error(error.stack));
