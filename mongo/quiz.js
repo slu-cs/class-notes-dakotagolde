@@ -38,7 +38,7 @@ const find1 = function(array, test) {
     }
   }
 };
-
+/*
 //console.log(numbers.find1(x => x % 2 === 0));
 //////////////////////////////////////////////////////////////// Question 3
 
