@@ -14,11 +14,11 @@ console.log(labs.map(x => x.seats));
 
 // B. Generate a new array containing only the labs with more than 10 seats (by invoking the built-in filter method).
 
-console.log(filter(labs, x => x.seats > 10));
+console.log(labs.filter(x => x.seats > 10));
 
 // C. Sort the existing array in order of (increasing) seat numbers (by invoking the built-in sort method).
 
-
+console.log(labs.sort((a,b) => a.seats - b.seats));
 
 //////////////////////////////////////////////////////////////// Question 2
 
@@ -26,10 +26,20 @@ const numbers = [5, 4, 3, 2, 1];
 
 // A. Get the first even number (by invoking the built-in find method).
 
+console.log(numbers.find(x => x % 2 === 0));
 
 // B. Define a standalone find function. The array is its first argument and the callback is its second argument.
 
+const find1 = function(array, test) {
+  const copy = [];
+  for (const element of array) {
+    if (test(element)) {
+      return element;
+    }
+  }
+};
 
+console.log(numbers.find1(x => x % 2 === 0));
 //////////////////////////////////////////////////////////////// Question 3
 
 // This creates the user object described on the quiz.
