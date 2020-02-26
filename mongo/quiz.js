@@ -39,7 +39,7 @@ const find1 = function(array, test) {
   }
 };
 
-console.log(numbers.find1(x => x % 2 === 0));
+//console.log(numbers.find1(x => x % 2 === 0));
 //////////////////////////////////////////////////////////////// Question 3
 
 // This creates the user object described on the quiz.
