@@ -60,7 +60,7 @@ user.question("What is your name? ", function(name, error) {
     console.log("I am also", how+".");
   });
 });
-*/
+
 
 // The user.question method doesn't actually return a promise, so here is a question function that does.
 // Call this question function in part B instead of calling the user.question method.
@@ -72,16 +72,16 @@ const question = function(prompt) {
 
 question("What your name? ")
   .then(function(name){
-      console.log("Hello", name);
+      console.log("Hello", name+".");
       return question("How Are you doing? ")
     })
-      .then(how => console.log("I am also", how))
+      .then(how => console.log("I am also", how+"."))
       .catch(error => console.error(error.stack));
-
+*/
 //////////////////////////////////////////////////////////////// Question 4
 // Question 4 is commented out because otherwise it would interfere with Question 3.
 // When you're ready to work on Question 4, uncomment it and comment out Question 3.
-/*
+
 // This function returns a promise, which produces 42 after an asynchronous delay of one second.
 const f1 = function() {
   return new Promise(resolve => setTimeout(() => resolve(42), 1000));
@@ -94,5 +94,16 @@ const f2 = function() {
 
 // Run f1 and f2 in parallel and log 'f1', 'f2', or 'equal' to indicate which function returned the larger result.
 
+Promise.all([f1(), f2()])
+  .then(function(val){
 
-*/
+    if (val[0] > val[1]) {
+      console.log('f1');
+    }
+    else if (val[0] < val[1]) {
+      console.log('f2');
+    }
+    else {
+      console.log("They're Equal!");
+    }
+  }).catch(error => console.error(error.stack));
