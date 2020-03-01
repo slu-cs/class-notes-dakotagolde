@@ -63,6 +63,7 @@ user.question("What is your name? ", function(str1, error) {
 
 // The user.question method doesn't actually return a promise, so here is a question function that does.
 // Call this question function in part B instead of calling the user.question method.
+/*
 const question = function(prompt) {
   return new Promise(resolve => user.question(prompt, resolve));
 };
