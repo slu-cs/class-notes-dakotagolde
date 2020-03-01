@@ -98,12 +98,12 @@ Promise.all([f1(), f2()])
   .then(function(val){
 
     if (val[0] > val[1]) {
-      console.log(`f1: ${f1()} is greater than f2: ${f2()}`);
+      console.log(`f1: ${val[0]} is greater than f2: ${val[1]}`);
     }
     else if (val[0] < val[1]) {
-      console.log(`f2: ${f2()} is greater than f1: ${f1()}`);
+      console.log(`f2: ${val[0]} is greater than f1: ${val[1]}`);
     }
     else {
-      console.log(`They're equal with ${f1()}!`);
+      console.log(`They're equal with ${val[0]}!`);
     }
   }).catch(error => console.error(error.stack));
