@@ -30,16 +30,16 @@ console.log(numbers.find(x => x % 2 === 0));
 
 // B. Define a standalone find function. The array is its first argument and the callback is its second argument.
 
-const find1 = function(array, test) {
-  const copy = [];
+const find = function(array, test) {
   for (const element of array) {
     if (test(element)) {
       return element;
     }
+    return undefined;
   }
 };
 
-console.log(numbers.find1(x => x % 2 === 0));
+console.log(numbers.find(x => x % 2 === 0));
 //////////////////////////////////////////////////////////////// Question 3
 
 // This creates the user object described on the quiz.
@@ -52,6 +52,14 @@ const user = readline.createInterface({
 
 // A. Make small talk, using traditional callbacks.
 
+user.question("What is your name? ", function(str1, error) {
+  if (error) console.log(error.stack);
+  console.log("Hello", str1, ".");
+  user.question("How are you doing?", function(str2, error) {
+    if (error) console.log(error.stack);
+    console.log("I am also", str2, ".");
+  });
+});
 
 // The user.question method doesn't actually return a promise, so here is a question function that does.
 // Call this question function in part B instead of calling the user.question method.
