@@ -30,16 +30,16 @@ console.log(numbers.find(x => x % 2 === 0));
 
 // B. Define a standalone find function. The array is its first argument and the callback is its second argument.
 
-const find1 = function(array, test) {
-  const copy = [];
+const find = function(array, test) {
   for (const element of array) {
     if (test(element)) {
       return element;
     }
+    return undefined;
   }
 };
 
-console.log(numbers.find1(x => x % 2 === 0));
+console.log(numbers.find(x => x % 2 === 0));
 //////////////////////////////////////////////////////////////// Question 3
 
 // This creates the user object described on the quiz.
@@ -51,6 +51,15 @@ const user = readline.createInterface({
 });
 
 // A. Make small talk, using traditional callbacks.
+/*
+user.question("What is your name? ", function(name, error) {
+  if (error) console.log(error.stack);
+  console.log("Hello", name+".");
+  user.question("How are you doing? ", function(how, error) {
+    if (error) console.log(error.stack);
+    console.log("I am also", how+".");
+  });
+});
 
 
 // The user.question method doesn't actually return a promise, so here is a question function that does.
@@ -61,11 +70,18 @@ const question = function(prompt) {
 
 // B. Make small talk again, using promises.
 
-
+question("What your name? ")
+  .then(function(name){
+      console.log("Hello", name+".");
+      return question("How Are you doing? ")
+    })
+      .then(how => console.log("I am also", how+"."))
+      .catch(error => console.error(error.stack));
+*/
 //////////////////////////////////////////////////////////////// Question 4
 // Question 4 is commented out because otherwise it would interfere with Question 3.
 // When you're ready to work on Question 4, uncomment it and comment out Question 3.
-/*
+
 // This function returns a promise, which produces 42 after an asynchronous delay of one second.
 const f1 = function() {
   return new Promise(resolve => setTimeout(() => resolve(42), 1000));
@@ -78,5 +94,16 @@ const f2 = function() {
 
 // Run f1 and f2 in parallel and log 'f1', 'f2', or 'equal' to indicate which function returned the larger result.
 
+Promise.all([f1(), f2()])
+  .then(function(val){
 
-*/
+    if (val[0] > val[1]) {
+      console.log(`f1: ${val[0]} is greater than f2: ${val[1]}`);
+    }
+    else if (val[0] < val[1]) {
+      console.log(`f2: ${val[0]} is greater than f1: ${val[1]}`);
+    }
+    else {
+      console.log(`They're equal with ${val[0]}!`);
+    }
+  }).catch(error => console.error(error.stack));
