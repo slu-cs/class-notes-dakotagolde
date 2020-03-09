@@ -15,24 +15,15 @@ app.get('/favicon.ico', function(request, response) {
 
 // Log requests to the console
 app.use(function(request, response, next) {
-  console.log('----------------------------------', new Date().toLocalTimeString());
+  console.log('---------------------', new Date().toLocaleTimeString());
   console.log(request.method, request.url);
   console.log('Body =', request.body);
-  next();   // Keep handling this request
+  next(); // Keep handling this request
 });
 
-// Home Page
-// cs-linuxlab-37.stlawu.edu:3000/
+// cs-linuxlab-##.stlawu.edu:3000/
 app.get('/', function(request, response) {
-
-  // response.send(`
-    //<h1>Bakery</h1>
-    //<ul>
-    //  <li><a href="/cakes">Cakes</a></li>
-    //  <li><a href="/pies">Pies</a></li>
-    //</ul>
-    //`);
-    response.render('index');
+  response.render('index');
 });
 
 // Routing
@@ -40,14 +31,14 @@ app.use('/cakes', require('./cakes.js'));
 app.use('/pies', require('./pies.js'));
 
 // Handle undefined routes
-app.use(function(request, response,next) {
+app.use(function(request, response, next) {
   console.log('Replied with 404');
   response.status(404).end();
 });
 
 // Handle other errors
 app.use(function(error, request, response, next) {
-  console.log(error.stack);
+  console.error(error.stack);
   response.status(500).send(error.message);
 });
 
